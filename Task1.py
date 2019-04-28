@@ -18,3 +18,22 @@ How many different telephone numbers are there in the records?
 Print a message:
 "There are <count> different telephone numbers in the records."
 """
+
+# Phone call column definitions
+col_callFrom = 0
+col_callTo = 1
+col_callStartAt = 2
+col_callDuration = 3
+
+# Choosing a set because they maintain only unique values
+uniqueNumbers = set()
+# Iterate over the list of entries in the call log -> O(n)
+for entry in calls:
+    # Adding to a set -> O(1)
+    uniqueNumbers.add(entry[col_callFrom])
+    uniqueNumbers.add(entry[col_callTo])
+
+# Getting the length of a set -> O(1)
+print("There are %d different telephone numbers in the records." % len(uniqueNumbers))
+
+# Overall time complexity -> O(n)
