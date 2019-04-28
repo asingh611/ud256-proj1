@@ -43,3 +43,17 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+# Psuedocode
+# This assumes all phone numbers are of a valid format as outlined above
+
+# For each entry in the log
+#   If calling phone number has area code 080 (isBangloreNumber):
+#       Check the format of the called phone number and extract the area code/prefix (getCodesAndPrefixes)
+#           If has parentheses, then extract characters between parentheses (ex: (080)xxxxxxx -> 080)
+#           Else if contains a space, extract the first four digits
+#           Otherwise -> 140 (telemarketer)
+#       Add to set of codes/prefixes
+#       If called number had 080 area code (isBangloreNumber), increment sumOfBangloreNumbersCalled
+# Print Message 1
+# Print Message 2
