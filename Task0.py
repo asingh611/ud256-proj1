@@ -20,3 +20,34 @@ Print messages:
 "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
 """
 
+# Text column definitions
+col_textFrom = 0
+col_textTo = 1
+col_textTime = 2
+
+# Get the first record from the list of texts
+# Time complexity to get item from position in list -> O(1)
+first_text = texts[0]
+
+# Print out message
+# Time complexity to print message -> O(1)
+print("First record of texts, %s texts %s at time %s"
+      % (first_text[col_textFrom], first_text[col_textTo], first_text[col_textTime]))
+
+
+# Phone call column definitions
+col_callFrom = 0
+col_callTo = 1
+col_callStartAt = 2
+col_callDuration = 3
+
+# Get last record from list of calls
+# Time complexity to get item from position in list -> O(1)
+last_call = calls[-1]
+
+# Print out message
+# Time complexity to print message -> O(1)
+print("Last record of calls, %s calls %s at time %s, lasting %s seconds"
+      % (last_call[col_callFrom], last_call[col_callTo], last_call[col_callStartAt], last_call[col_callDuration]))
+
+# Overall time complexity -> O(1)
