@@ -38,9 +38,9 @@ col_callStartAt = 2
 col_callDuration = 3
 
 callTimes = dict()
-longestTimePhoneNumber = calls[0][0]  # Setting the initial value as the first number
+longestTimePhoneNumber = calls[0][0]  # Setting the initial longest call as the first phone number
 
-# Iterating over the call entries -> O(n)
+# Iterating over the call entries -> O(number of call entries)
 for entry in calls:
     # Get the phone numbers for this entry and how long they were talking
     callFromPhoneNumber = entry[col_callFrom]
@@ -74,4 +74,4 @@ for entry in calls:
 print("%s spent the longest time, %s seconds, on the phone during September 2016." %
       (longestTimePhoneNumber, callTimes[longestTimePhoneNumber]))
 
-# Overall time complexity -> O(n)
+# Overall worst-case time complexity -> O(n)

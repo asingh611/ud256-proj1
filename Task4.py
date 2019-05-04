@@ -51,22 +51,32 @@ outgoingTexts = set()
 incomingTexts = set()
 candidateTelemarketers = set()
 
-# Iterate through calls and add
+# Iterate through calls and add phone numbers into sets -> O(number of call entries)
 for entry in calls:
+    # Adding items to a set -> O(1)
     outgoingCalls.add(entry[col_callFrom])
     incomingCalls.add(entry[col_callTo])
 
+# Iterate through texts and add phone numbers into sets -> O(number of text entries)
 for entry in texts:
+    # Adding items to a set -> O(1)
     outgoingTexts.add(entry[col_textFrom])
     incomingTexts.add(entry[col_textTo])
 
+# Iterate through unique outgoing phone numbers -> O(unique outgoing phone numbers)
 for phoneNumber in outgoingCalls:
+    # Checking for items in a set -> O(1)
     if phoneNumber not in incomingCalls \
         and phoneNumber not in incomingTexts \
             and phoneNumber not in outgoingTexts:
 
+        # Adding items to a set -> O(1)
         candidateTelemarketers.add(phoneNumber)
 
 print("These numbers could be telemarketers: ")
+# Python sorting -> O(n*log(n))
+# Iterating through list -> O(number of phone numbers)
 for phoneNumber in sorted(candidateTelemarketers):
     print(phoneNumber)
+
+# Overall worst-case complexity: O(n*log(n)) due to sorting

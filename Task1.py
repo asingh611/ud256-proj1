@@ -33,13 +33,13 @@ col_callDuration = 3
 # Choosing a set because they maintain only unique values
 uniqueNumbers = set()
 
-# Iterate over the list of entries in the text log -> O(n)
+# Iterate over the list of entries in the text log -> O(number of text entries)
 for entry in texts:
     # Adding to a set -> O(1)
     uniqueNumbers.add(entry[col_textFrom])
     uniqueNumbers.add(entry[col_textTo])
 
-# Iterate over the list of entries in the call log -> O(n)
+# Iterate over the list of entries in the call log -> O(number of call entries)
 for entry in calls:
     # Adding to a set -> O(1)
     uniqueNumbers.add(entry[col_callFrom])
@@ -48,4 +48,4 @@ for entry in calls:
 # Getting the length of a set -> O(1)
 print("There are %d different telephone numbers in the records." % len(uniqueNumbers))
 
-# Overall time complexity -> O(n) (considering n as the sum of the number of entries in both the call and text logs)
+# Overall worst-case time complexity -> O(n)

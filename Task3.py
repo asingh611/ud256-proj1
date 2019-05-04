@@ -68,13 +68,13 @@ col_callDuration = 3
 # Extract the codes and prefixes from phone numbers based on the conventions outlined above
 def get_codes_and_prefixes(phone_number):
     # Case 1: Is it a fixed line? (Has area code enclosed in parenthesis)
-    # Will look up whether phone number has open parenthesis
+    # Will look up whether phone number has open parenthesis -> O(lengthOfString)
     if '(' in phone_number:
         # Return the portion of the string between the parenthesis
         return phone_number.split(')')[0][1:]
 
     # Case 2: Is the phone number a mobile number? (No parenthesis but has space in middle)
-    # Will check if phone number contains space
+    # Will check if phone number contains space -> O(lengthOfString)
     elif ' ' in phone_number:
         # Return the portion of the string before the space
         return phone_number.split(' ')[0]
@@ -104,7 +104,7 @@ def is_bangalore_number(phone_number):
 codesAndPrefixesCalled = set()
 numOfBangaloreNumbersCalled = 0
 
-# Time complexity to iterate through call entries O(n)
+# Time complexity to iterate through call entries -> O(number of call entries)
 for entry in calls:
     call_from = entry[col_callFrom]
     call_to = entry[col_callTo]
@@ -117,6 +117,8 @@ for entry in calls:
 
 # Output for part 1:
 print("The numbers called by people in Bangalore have codes:")
+# Python sorting -> O(n*log(n))
+# Iterating through list -> O(number of phone numbers)
 for code in sorted(codesAndPrefixesCalled):
     print(code)
 
@@ -124,3 +126,5 @@ for code in sorted(codesAndPrefixesCalled):
 percentOfBangaloreCalls = '{0:.2f}'.format(100 * numOfBangaloreNumbersCalled/len(calls))
 print("%s percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore."
       % percentOfBangaloreCalls)
+
+# Overall worst-case complexity: O(n*log(n)) due to sorting
