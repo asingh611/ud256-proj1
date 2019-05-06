@@ -77,7 +77,8 @@ def get_codes_and_prefixes(phone_number):
     # Will check if phone number contains space -> O(lengthOfString)
     elif ' ' in phone_number:
         # Return the portion of the string before the space
-        return phone_number.split(' ')[0]
+        # CORRECTION: Get first four digits only
+        return phone_number[0:4]
 
     # Case 3: Otherwise it's a telemarketer (with a 140 prefix)
     else:
@@ -102,6 +103,7 @@ def is_bangalore_number(phone_number):
 # print(is_bangalore_number('(04344)322628'))  # Expected: False
 
 codesAndPrefixesCalled = set()
+numOfBangaloreNumbersCallers = 0
 numOfBangaloreNumbersCalled = 0
 
 # Time complexity to iterate through call entries -> O(number of call entries)
@@ -110,6 +112,7 @@ for entry in calls:
     call_to = entry[col_callTo]
 
     if is_bangalore_number(call_from):
+        numOfBangaloreNumbersCallers += 1
         codesAndPrefixesCalled.add(get_codes_and_prefixes(call_to))
         if is_bangalore_number(call_to):
             numOfBangaloreNumbersCalled += 1
@@ -123,7 +126,8 @@ for code in sorted(codesAndPrefixesCalled):
     print(code)
 
 # Output for Part 2:
-percentOfBangaloreCalls = '{0:.2f}'.format(100 * numOfBangaloreNumbersCalled/len(calls))
+# CORRECTION: Divide by number of Bangalore callers, not total number of all calls
+percentOfBangaloreCalls = '{0:.2f}'.format(100 * numOfBangaloreNumbersCalled/numOfBangaloreNumbersCallers)
 print("%s percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore."
       % percentOfBangaloreCalls)
 
